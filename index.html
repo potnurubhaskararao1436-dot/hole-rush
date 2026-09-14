@@ -1,0 +1,132 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Hole Rush Multiplayer</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <canvas id="gameCanvas"></canvas>
+
+    <section id="startScreen">
+        <div class="start-card">
+            <h1 class="game-title">HOLE<br>RUSH</h1>
+
+            <p class="game-subtitle">
+                Eat everything. Grow bigger. Become unstoppable.
+            </p>
+
+            <input
+                id="playerNameInput"
+                class="name-input"
+                type="text"
+                maxlength="16"
+                placeholder="Enter your player name"
+                value="Player"
+            >
+
+            <div class="mode-buttons">
+                <button id="normalModeBtn" class="mode-button">
+                    Start Normal Mode
+                </button>
+
+                <button id="multiplayerBtn" class="mode-button secondary">
+                    Start Multiplayer
+                </button>
+            </div>
+
+            <p class="controls-info">
+                Move with WASD or arrow keys.<br>
+                You can also move using your mouse.
+            </p>
+        </div>
+    </section>
+
+    <section id="gameUI">
+        <div id="topHUD">
+            <div class="hud-left">
+                <div class="hud-box">
+                    <span class="hud-label">Score</span>
+                    <span id="score" class="hud-value">0</span>
+                </div>
+
+                <div class="hud-box">
+                    <span class="hud-label">Size</span>
+                    <span id="size" class="hud-value">35</span>
+                </div>
+
+                <div class="hud-box">
+                    <span class="hud-label">Time</span>
+                    <span id="timer" class="hud-value">120</span>
+                </div>
+            </div>
+
+            <div class="hud-right">
+                <div class="hud-box">
+                    <span class="hud-label">Power</span>
+                    <span id="power" class="hud-value">None</span>
+                </div>
+
+                <div class="hud-box">
+                    <span class="hud-label">Players</span>
+                    <span id="playerCount" class="hud-value">1</span>
+                </div>
+            </div>
+        </div>
+
+        <div id="modeLabel">Normal Mode</div>
+
+        <div id="bottomControls">
+            <button id="pauseBtn" class="game-button">
+                Pause
+            </button>
+
+            <button id="restartBtn" class="game-button">
+                Restart
+            </button>
+        </div>
+
+        <div id="mobileControls">
+            <button class="mobile-button up" data-key="ArrowUp">▲</button>
+            <button class="mobile-button left" data-key="ArrowLeft">◀</button>
+            <button class="mobile-button right" data-key="ArrowRight">▶</button>
+            <button class="mobile-button down" data-key="ArrowDown">▼</button>
+        </div>
+    </section>
+
+    <section id="pauseScreen">
+        <div class="pause-card">
+            <h2>Paused</h2>
+            <p>Press Resume to continue.</p>
+            <button id="resumeBtn" class="mode-button">
+                Resume
+            </button>
+        </div>
+    </section>
+
+    <section id="gameOverScreen">
+        <div class="game-over-card">
+            <h2>Game Over</h2>
+
+            <p>
+                Your final score:
+                <br>
+                <span id="finalScore">0</span>
+            </p>
+
+            <button id="playAgainBtn" class="mode-button">
+                Play Again
+            </button>
+        </div>
+    </section>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="script.js"></script>
+
+</body>
+</html>
