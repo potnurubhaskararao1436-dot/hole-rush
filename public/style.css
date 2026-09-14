@@ -1,0 +1,662 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&display=swap');
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+:root {
+    --blue: #4d96ff;
+    --purple: #a855f7;
+    --cyan: #00f5d4;
+    --dark: #070713;
+    --panel: rgba(16, 16, 38, 0.9);
+    --text-soft: #a6a6c2;
+}
+
+body {
+    min-height: 100vh;
+    overflow-x: hidden;
+    background: var(--dark);
+    color: white;
+    font-family: "Orbitron", Arial, sans-serif;
+}
+
+button,
+input {
+    font: inherit;
+}
+
+button {
+    cursor: pointer;
+}
+
+button:disabled {
+    cursor: not-allowed;
+    opacity: 0.55;
+}
+
+#homeScreen {
+    position: relative;
+    min-height: 100vh;
+    overflow: hidden;
+    background:
+        radial-gradient(
+            circle at 15% 20%,
+            rgba(77, 150, 255, 0.18),
+            transparent 30%
+        ),
+        radial-gradient(
+            circle at 85% 75%,
+            rgba(168, 85, 247, 0.16),
+            transparent 32%
+        ),
+        #070713;
+}
+
+.background-grid {
+    position: absolute;
+    inset: 0;
+    opacity: 0.18;
+    background-image:
+        linear-gradient(rgba(100, 100, 160, 0.2) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(100, 100, 160, 0.2) 1px, transparent 1px);
+    background-size: 45px 45px;
+    transform: perspective(500px) rotateX(55deg) scale(1.5);
+    transform-origin: center bottom;
+}
+
+.background-glow {
+    position: absolute;
+    width: 350px;
+    height: 350px;
+    border-radius: 50%;
+    filter: blur(100px);
+    opacity: 0.25;
+    pointer-events: none;
+}
+
+.glow-one {
+    top: -130px;
+    left: -100px;
+    background: var(--blue);
+}
+
+.glow-two {
+    right: -100px;
+    bottom: -150px;
+    background: var(--purple);
+}
+
+.home-layout {
+    position: relative;
+    z-index: 2;
+    display: grid;
+    grid-template-columns: minmax(0, 1.1fr) minmax(350px, 0.9fr);
+    gap: 70px;
+    width: min(1250px, 92%);
+    min-height: calc(100vh - 70px);
+    margin: 0 auto;
+    align-items: center;
+}
+
+.hero-section {
+    padding: 40px 0;
+}
+
+.game-badge {
+    display: inline-block;
+    padding: 9px 15px;
+    border: 1px solid rgba(0, 245, 212, 0.45);
+    border-radius: 30px;
+    color: var(--cyan);
+    background: rgba(0, 245, 212, 0.08);
+    font-size: 11px;
+    letter-spacing: 2px;
+    box-shadow: 0 0 20px rgba(0, 245, 212, 0.1);
+}
+
+.game-title {
+    display: flex;
+    flex-direction: column;
+    margin: 25px 0;
+    font-size: clamp(65px, 9vw, 125px);
+    font-weight: 900;
+    line-height: 0.88;
+    letter-spacing: 5px;
+}
+
+.game-title span:first-child {
+    color: white;
+    text-shadow:
+        0 0 8px rgba(77, 150, 255, 0.9),
+        0 0 30px rgba(77, 150, 255, 0.7);
+}
+
+.game-title span:last-child {
+    color: transparent;
+    background: linear-gradient(
+        90deg,
+        var(--blue),
+        var(--cyan),
+        var(--purple)
+    );
+    background-clip: text;
+    -webkit-background-clip: text;
+    text-shadow: 0 0 35px rgba(77, 150, 255, 0.3);
+}
+
+.game-subtitle {
+    max-width: 550px;
+    margin-bottom: 30px;
+    color: var(--text-soft);
+    font-family: Arial, sans-serif;
+    font-size: 18px;
+    line-height: 1.6;
+}
+
+.player-input-area {
+    max-width: 430px;
+    margin-bottom: 20px;
+}
+
+.player-input-area label {
+    display: block;
+    margin-bottom: 8px;
+    color: #77779a;
+    font-size: 11px;
+    letter-spacing: 2px;
+}
+
+.player-input-area input {
+    width: 100%;
+    padding: 16px 18px;
+    border: 1px solid #34345b;
+    border-radius: 12px;
+    outline: none;
+    color: white;
+    background: rgba(10, 10, 28, 0.8);
+    transition: 0.2s;
+}
+
+.player-input-area input:focus {
+    border-color: var(--blue);
+    box-shadow: 0 0 20px rgba(77, 150, 255, 0.2);
+}
+
+.home-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    max-width: 550px;
+}
+
+.main-button {
+    width: auto;
+    min-width: 210px;
+    padding: 17px 22px;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 12px;
+    color: white;
+    background: linear-gradient(
+        135deg,
+        #4d96ff,
+        #7255ff
+    );
+    font-size: 13px;
+    font-weight: 800;
+    letter-spacing: 1px;
+    box-shadow: 0 10px 30px rgba(77, 150, 255, 0.18);
+    transition: 0.2s;
+}
+
+.main-button span {
+    margin-right: 8px;
+}
+
+.main-button:hover {
+    transform: translateY(-3px);
+    filter: brightness(1.15);
+}
+
+.multiplayer-button {
+    background: linear-gradient(
+        135deg,
+        #9b5cff,
+        #e83e8c
+    );
+}
+
+.home-stats {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 35px;
+    margin-top: 40px;
+}
+
+.home-stats div {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+}
+
+.home-stats strong {
+    color: white;
+    font-size: 27px;
+}
+
+.home-stats span {
+    color: #77779a;
+    font-size: 9px;
+    letter-spacing: 1px;
+}
+
+.shop-panel {
+    padding: 28px;
+    border: 1px solid rgba(120, 120, 200, 0.22);
+    border-radius: 24px;
+    background:
+        linear-gradient(
+            145deg,
+            rgba(30, 30, 65, 0.92),
+            rgba(12, 12, 28, 0.96)
+        );
+    box-shadow:
+        0 25px 80px rgba(0, 0, 0, 0.35),
+        inset 0 1px rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(15px);
+}
+
+.shop-heading {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 15px;
+}
+
+.small-label {
+    color: var(--cyan);
+    font-size: 10px;
+    letter-spacing: 2px;
+}
+
+.shop-heading h2 {
+    margin-top: 8px;
+    font-size: 25px;
+    letter-spacing: 1px;
+}
+
+.coin-display {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    padding: 10px 13px;
+    border: 1px solid rgba(255, 209, 102, 0.3);
+    border-radius: 12px;
+    color: #ffd166;
+    background: rgba(255, 209, 102, 0.08);
+}
+
+.coin-display strong {
+    font-size: 18px;
+}
+
+.shop-description {
+    margin: 15px 0 22px;
+    color: var(--text-soft);
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+}
+
+.skin-list {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+    max-height: 450px;
+    overflow-y: auto;
+    padding-right: 3px;
+}
+
+.skin-card {
+    padding: 15px 10px;
+    border: 1px solid #303052;
+    border-radius: 16px;
+    text-align: center;
+    background: rgba(8, 8, 23, 0.8);
+    transition: 0.2s;
+}
+
+.skin-card:hover {
+    border-color: var(--blue);
+    transform: translateY(-2px);
+}
+
+.skin-preview {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 65px;
+    height: 65px;
+    margin: 0 auto 12px;
+    border: 3px solid var(--skin-color);
+    border-radius: 50%;
+    color: white;
+    background: #050509;
+    box-shadow:
+        0 0 15px var(--skin-color),
+        inset 0 0 20px rgba(0, 0, 0, 0.9);
+    font-size: 30px;
+}
+
+.skin-name {
+    min-height: 32px;
+    color: white;
+    font-size: 11px;
+    font-weight: 700;
+    line-height: 1.4;
+}
+
+.skin-price {
+    min-height: 18px;
+    margin: 7px 0;
+    color: #ffd166;
+    font-family: Arial, sans-serif;
+    font-size: 12px;
+}
+
+.skin-card button {
+    width: 100%;
+    padding: 9px 5px;
+    border-radius: 8px;
+    color: white;
+    background: #303052;
+    font-size: 10px;
+    font-weight: 700;
+}
+
+.skin-card button.selected {
+    color: #061c18;
+    background: var(--cyan);
+}
+
+.skin-card button.buy-button {
+    background: linear-gradient(
+        135deg,
+        #4d96ff,
+        #7255ff
+    );
+}
+
+.shop-tip {
+    margin-top: 18px;
+    padding: 12px;
+    border-radius: 10px;
+    color: #aaaac5;
+    background: rgba(77, 150, 255, 0.08);
+    font-family: Arial, sans-serif;
+    font-size: 12px;
+    line-height: 1.5;
+}
+
+.home-footer {
+    position: relative;
+    z-index: 2;
+    padding: 20px;
+    text-align: center;
+    color: #555575;
+    font-size: 10px;
+    letter-spacing: 3px;
+}
+
+.home-footer span {
+    margin: 0 8px;
+    color: var(--blue);
+}
+
+#gameUI {
+    display: none;
+    width: 100vw;
+    height: 100vh;
+}
+
+#gameCanvas {
+    display: block;
+    width: 100%;
+    height: 100%;
+    background: #202735;
+}
+
+.top-bar {
+    position: fixed;
+    z-index: 5;
+    top: 15px;
+    left: 15px;
+    right: 15px;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 8px;
+    pointer-events: none;
+}
+
+.hud-box,
+.small-button {
+    pointer-events: auto;
+}
+
+.hud-box {
+    min-width: 78px;
+    padding: 8px 12px;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 12px;
+    text-align: center;
+    background: rgba(8, 8, 20, 0.85);
+}
+
+.hud-box span {
+    display: block;
+    color: #aaaac5;
+    font-size: 10px;
+}
+
+.hud-box strong {
+    display: block;
+    margin-top: 4px;
+    font-size: 17px;
+}
+
+.small-button {
+    width: auto;
+    margin: 0;
+    padding: 12px 16px;
+    border-radius: 10px;
+    color: white;
+    background: #303047;
+}
+
+.mode-label {
+    position: fixed;
+    z-index: 5;
+    top: 105px;
+    left: 20px;
+    padding: 8px 12px;
+    border-radius: 10px;
+    color: #d8d8ff;
+    background: rgba(8, 8, 20, 0.75);
+    font-size: 12px;
+}
+
+.player-count {
+    position: fixed;
+    z-index: 5;
+    top: 105px;
+    right: 20px;
+    padding: 8px 12px;
+    border-radius: 10px;
+    color: #d8d8ff;
+    background: rgba(8, 8, 20, 0.75);
+    font-size: 12px;
+}
+
+.overlay {
+    position: fixed;
+    z-index: 20;
+    inset: 0;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    background: rgba(0, 0, 0, 0.75);
+    backdrop-filter: blur(6px);
+}
+
+.message-card {
+    width: min(420px, 100%);
+    padding: 35px;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 22px;
+    text-align: center;
+    background: #101023;
+    box-shadow: 0 0 50px rgba(77, 150, 255, 0.25);
+}
+
+.message-card h2 {
+    margin-bottom: 20px;
+    font-size: 30px;
+}
+
+.message-card p {
+    margin: 12px 0;
+    color: #aaaac5;
+    font-family: Arial, sans-serif;
+}
+
+.message-card button {
+    margin-top: 12px;
+}
+
+.secondary-button {
+    background: #303047;
+}
+
+.mobile-controls {
+    display: none;
+    position: fixed;
+    z-index: 10;
+    right: 0;
+    bottom: 25px;
+    left: 0;
+    text-align: center;
+}
+
+.mobile-button {
+    width: 55px;
+    height: 55px;
+    padding: 0;
+    margin: 3px;
+    border: 1px solid #55557a;
+    border-radius: 50%;
+    background: rgba(20, 20, 45, 0.85);
+}
+
+@media (max-width: 950px) {
+    body {
+        overflow-y: auto;
+    }
+
+    .home-layout {
+        grid-template-columns: 1fr;
+        gap: 30px;
+        padding: 50px 0;
+    }
+
+    .hero-section {
+        text-align: center;
+    }
+
+    .game-subtitle,
+    .player-input-area {
+        margin-right: auto;
+        margin-left: auto;
+    }
+
+    .home-actions {
+        justify-content: center;
+        margin: auto;
+    }
+
+    .home-stats {
+        justify-content: center;
+    }
+
+    .shop-panel {
+        width: min(550px, 100%);
+        margin: auto;
+    }
+
+    .home-footer {
+        padding-bottom: 30px;
+    }
+}
+
+@media (max-width: 600px) {
+    .home-layout {
+        width: 92%;
+        padding-top: 30px;
+    }
+
+    .game-title {
+        font-size: 65px;
+    }
+
+    .game-subtitle {
+        font-size: 15px;
+    }
+
+    .main-button {
+        width: 100%;
+    }
+
+    .shop-panel {
+        padding: 20px;
+    }
+
+    .shop-heading h2 {
+        font-size: 20px;
+    }
+
+    .skin-list {
+        gap: 8px;
+    }
+
+    .top-bar {
+        top: 8px;
+        left: 8px;
+        right: 8px;
+        gap: 5px;
+    }
+
+    .hud-box {
+        min-width: 53px;
+        padding: 6px;
+    }
+
+    .hud-box span {
+        font-size: 8px;
+    }
+
+    .hud-box strong {
+        font-size: 14px;
+    }
+
+    .small-button {
+        padding: 10px;
+        font-size: 11px;
+    }
+
+    .mobile-controls {
+        display: block;
+    }
+}
