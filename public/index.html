@@ -1,0 +1,212 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Hole Rush</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <main id="homeScreen">
+
+        <div class="background-grid"></div>
+        <div class="background-glow glow-one"></div>
+        <div class="background-glow glow-two"></div>
+
+        <section class="home-layout">
+
+            <div class="hero-section">
+
+                <div class="game-badge">
+                    ● ONLINE ARENA
+                </div>
+
+                <h1 class="game-title">
+                    <span>HOLE</span>
+                    <span>RUSH</span>
+                </h1>
+
+                <p class="game-subtitle">
+                    Eat everything. Grow bigger.
+                    Become the ultimate arena champion.
+                </p>
+
+                <div class="player-input-area">
+                    <label for="playerNameInput">
+                        PLAYER NAME
+                    </label>
+
+                    <input
+                        id="playerNameInput"
+                        type="text"
+                        maxlength="16"
+                        placeholder="Enter your name"
+                    >
+                </div>
+
+                <div class="home-actions">
+                    <button id="normalModeBtn" class="main-button">
+                        <span>▶</span>
+                        PLAY NORMAL
+                    </button>
+
+                    <button id="multiplayerBtn" class="main-button multiplayer-button">
+                        <span>⚔</span>
+                        COMPETITIVE
+                    </button>
+                </div>
+
+                <div class="home-stats">
+                    <div>
+                        <strong>10</strong>
+                        <span>STARTING COINS</span>
+                    </div>
+
+                    <div>
+                        <strong>6</strong>
+                        <span>FLAG SKINS</span>
+                    </div>
+
+                    <div>
+                        <strong>∞</strong>
+                        <span>FUN</span>
+                    </div>
+                </div>
+
+            </div>
+
+            <aside class="shop-panel">
+
+                <div class="shop-heading">
+                    <div>
+                        <span class="small-label">CUSTOMIZATION</span>
+                        <h2>SKIN MARKET</h2>
+                    </div>
+
+                    <div class="coin-display">
+                        <span>🪙</span>
+                        <strong id="homeCoins">10</strong>
+                    </div>
+                </div>
+
+                <p class="shop-description">
+                    Choose your identity before entering the arena.
+                </p>
+
+                <div id="skinList" class="skin-list"></div>
+
+                <div class="shop-tip">
+                    💡 Earn coins by collecting rare coins in the arena.
+                </div>
+
+            </aside>
+
+        </section>
+
+        <footer class="home-footer">
+            HOLE RUSH <span>•</span> ENTER THE VOID
+        </footer>
+
+    </main>
+
+    <section id="gameUI">
+
+        <div class="top-bar">
+
+            <div class="hud-box">
+                <span>SCORE</span>
+                <strong id="score">0</strong>
+            </div>
+
+            <div class="hud-box">
+                <span>SIZE</span>
+                <strong id="size">35</strong>
+            </div>
+
+            <div class="hud-box">
+                <span>TIME</span>
+                <strong id="timer">120</strong>
+            </div>
+
+            <div class="hud-box">
+                <span>COINS</span>
+                <strong id="coins">10</strong>
+            </div>
+
+            <div class="hud-box">
+                <span>POWER</span>
+                <strong id="power">None</strong>
+            </div>
+
+            <button id="pauseBtn" class="small-button">
+                Pause
+            </button>
+
+            <button id="homeButton" class="small-button">
+                Home
+            </button>
+
+        </div>
+
+        <div id="modeLabel" class="mode-label">
+            Normal Mode
+        </div>
+
+        <div class="player-count">
+            Players: <span id="playerCount">1</span>
+        </div>
+
+        <canvas id="gameCanvas"></canvas>
+
+        <div class="mobile-controls">
+            <button class="mobile-button" data-key="ArrowUp">▲</button>
+
+            <div>
+                <button class="mobile-button" data-key="ArrowLeft">◀</button>
+                <button class="mobile-button" data-key="ArrowDown">▼</button>
+                <button class="mobile-button" data-key="ArrowRight">▶</button>
+            </div>
+        </div>
+
+    </section>
+
+    <div id="pauseScreen" class="overlay">
+        <div class="message-card">
+            <h2>GAME PAUSED</h2>
+            <button id="resumeBtn">RESUME</button>
+        </div>
+    </div>
+
+    <div id="gameOverScreen" class="overlay">
+        <div class="message-card">
+            <h2>TIME'S UP!</h2>
+
+            <p>
+                Final Score:
+                <strong id="finalScore">0</strong>
+            </p>
+
+            <p>
+                Coins Collected:
+                <strong id="finalCoins">0</strong>
+            </p>
+
+            <button id="playAgainBtn">
+                PLAY AGAIN
+            </button>
+
+            <button id="homeAfterGameBtn" class="secondary-button">
+                BACK TO HOME
+            </button>
+        </div>
+    </div>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="script.js"></script>
+
+</body>
+</html>
